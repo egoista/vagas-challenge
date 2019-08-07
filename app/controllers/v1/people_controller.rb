@@ -1,7 +1,7 @@
 module V1
   class PeopleController < ApplicationController
     def create
-      location = Location.find_by(name: params['localizacao'])
+      location = Location.find_by(name: params.require('localizacao'))
 
       if location.nil?
         render json: translate('location_not_found'), status: :unprocessable_entity and return
@@ -19,9 +19,9 @@ module V1
 
     def translate_create_params
       {
-        name: params['nome'],
-        occupation: params['profissao'],
-        level: params['nivel'].to_i
+        name: params.require('nome'),
+        occupation: params.require('profissao'),
+        level: params.require('nivel').to_i
       }
     end
   end

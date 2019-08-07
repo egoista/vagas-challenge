@@ -38,6 +38,14 @@ RSpec.describe V1::PeopleController, type: :controller do
         end
       end
     end
+
+    context 'with invalid params' do
+      it "has a 400 status code" do
+        post :create, params: {}
+
+        expect(response.status).to eq(400)
+      end
+    end
   end
   
 end

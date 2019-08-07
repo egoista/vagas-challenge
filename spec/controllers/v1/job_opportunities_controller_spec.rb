@@ -10,7 +10,7 @@ RSpec.describe V1::JobOpportunitiesController, type: :controller do
       nivel: 3
     }
   end
-  
+
   describe 'POST create' do
     context 'with valid params' do
       context 'when location exists' do
@@ -37,6 +37,21 @@ RSpec.describe V1::JobOpportunitiesController, type: :controller do
 
           expect(response.status).to eq(422)
         end
+
+        it "answers with location error message" do
+          post :create, params: params
+
+          json = JSON.parse(response.body)
+          expect(json).to include_json(error_message: 'Localização não encontrada')
+        end
+      end
+    end
+
+    context 'with invalid params' do
+      it "has a 400 status code" do
+        post :create, params: {}
+
+        expect(response.status).to eq(400)
       end
     end
   end

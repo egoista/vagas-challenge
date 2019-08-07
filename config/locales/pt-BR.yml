@@ -1,4 +1,12 @@
 pt-BR:
+  controller:
+    error:
+      missing_param: "Parametro não encontrado ou em branco: %{param}"
   people:
     create:
       location_not_found: "Localização não encontrada"
+      people_not_saved: "Erro ao salvar Pessoa"
+  job_opportunities:
+    create:
+      location_not_found: "Localização não encontrada"
+      job_opportunity_not_saved: "Erro ao salvar Vaga"

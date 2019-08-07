@@ -1,12 +1,8 @@
 module V1
   class PeopleController < ApplicationController
     def create
-      location = Location.find_by(name: params.require('localizacao'))
-
-      if location.nil?
-        render json: translate('location_not_found'), status: :unprocessable_entity and return
-      end
-
+      location = Location.find_by!(name: params.require('localizacao'))
+      
       people = Person.new(translate_create_params.merge(location: location))
       if people.save
         render json: { id: people.id }, status: :created

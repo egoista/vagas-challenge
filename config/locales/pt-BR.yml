@@ -1,7 +1,11 @@
 pt-BR:
+  activerecord:
+    models:
+      location: 'Localização'
   controller:
     error:
       missing_param: "Parametro não encontrado ou em branco: %{param}"
+      record_not_found: "%{model} não encontrado."
   people:
     create:
       location_not_found: "Localização não encontrada"
@@ -10,3 +14,6 @@ pt-BR:
     create:
       location_not_found: "Localização não encontrada"
       job_opportunity_not_saved: "Erro ao salvar Vaga"
+  job_applications:
+    create:
+      job_application_not_saved: "Erro ao salvar Candidatura"

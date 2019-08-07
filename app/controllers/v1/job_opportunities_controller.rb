@@ -2,11 +2,7 @@ module V1
   class JobOpportunitiesController < ApplicationController
     
     def create
-      location = Location.find_by(name: params.require('localizacao'))
-
-      if location.nil?
-        render_error_message('location_not_found') and return
-      end
+      location = Location.find_by!(name: params.require('localizacao'))
 
       job_opportunity = JobOpportunity.new(translate_create_params.merge(location: location))
       if job_opportunity.save

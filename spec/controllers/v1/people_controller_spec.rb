@@ -31,10 +31,17 @@ RSpec.describe V1::PeopleController, type: :controller do
       end
 
       context 'when location does not exists' do
-        it "has a 422 status code" do
+        it "has a 404 status code" do
           post :create, params: params
 
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(404)
+        end
+
+        it "answers with location error message" do
+          post :create, params: params
+
+          json = JSON.parse(response.body)
+          expect(json).to include_json(error_message: 'Localização não encontrado.')
         end
       end
     end

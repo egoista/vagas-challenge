@@ -1,0 +1,4 @@
+pt-BR:
+  people:
+    create:
+      location_not_found: "Localização não encontrada"

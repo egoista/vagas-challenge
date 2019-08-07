@@ -1,12 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe V1::PeopleController, type: :controller do
+RSpec.describe V1::JobOpportunitiesController, type: :controller do
   let(:params) do
     {
-      nome: "John Doe",
-      profissao: "Engenheiro de Software",
-      localizacao: "C",
-      nivel: 2
+      empresa: "Teste",
+      titulo: "Vaga teste",
+      descricao: "Criar os mais diferentes tipos de teste",
+      localizacao: "A",
+      nivel: 3
     }
   end
   
@@ -22,7 +23,7 @@ RSpec.describe V1::PeopleController, type: :controller do
           expect(response.status).to eq(201)
         end
 
-        it "answers with the person id" do
+        it "answers with the job opportunity id" do
           post :create, params: params
 
           json = JSON.parse(response.body)
